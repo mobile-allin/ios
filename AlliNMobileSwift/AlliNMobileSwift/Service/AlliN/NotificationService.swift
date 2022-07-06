@@ -25,9 +25,10 @@ class NotificationService : BaseService {
         guard let data = Data.transform(array: [
             (key: BodyConstant.ID, value: sendId),
             (key: BodyConstant.DATE, value: date),
-            (key: BodyConstant.DATE_OPENING, value: Date.currentDate(format: "yyyy-MM-dd HH:mm:ss"))
-            ]) else {
-                return;
+            (key: BodyConstant.DATE_OPENING, value: Date.currentDate(format: "yyyy-MM-dd HH:mm:ss")),
+            (key: BodyConstant.DEVICE_TOKEN, value: AlliNPush.getInstance().deviceToken)
+        ]) else {
+            return;
         }
         
         HttpRequest.post(RouteConstant.NOTIFICATION_TRANSACTIONAL, data: data);
