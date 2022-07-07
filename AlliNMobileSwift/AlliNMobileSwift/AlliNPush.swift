@@ -102,10 +102,6 @@ public class AlliNPush: NSObject {
         DeviceService().showAlertScheme(show);
     }
     
-    public func showAlertHTML(_ show: Bool) {
-        DeviceService().showAlertHTML(show);
-    }
-    
     public func setBarButtonColor(hexColor: String) {
         DeviceService().barButtonColor(hexColor);
     }

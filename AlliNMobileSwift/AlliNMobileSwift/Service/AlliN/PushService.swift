@@ -137,16 +137,10 @@ class PushService {
         UIApplication.shared.applicationIconBadgeNumber = 0;
         
         let scheme = userInfo.object(forKey: NotificationConstant.URL_SCHEME) as? String != nil;
-        let campaign = userInfo.object(forKey: NotificationConstant.URL_CAMPAIGN) as? String != nil;
-        let transactional = userInfo.object(forKey: NotificationConstant.URL_TRANSACTIONAL) as? String != nil;
         
-        if (scheme || campaign || transactional) {
-            if let date = userInfo.object(forKey: NotificationConstant.DATE_NOTIFICATION) as? String {
-                if let campaignId = self.getKey(userInfo, key: NotificationConstant.ID_CAMPAIGN) {
-                    NotificationService().campaign(campaignId: campaignId, date: date);
-                } else if let sendId = self.getKey(userInfo, key: NotificationConstant.ID_SEND) {
-                    NotificationService().transactional(sendId: sendId, date: date);
-                }
+        if (scheme) {
+            if let viewId = userInfo.object(forKey: NotificationConstant.VIEW_ID) as? String {
+                NotificationService().view(id: viewId);
             }
             
             let controller = viewController == nil ? self.topViewController : viewController!;
@@ -168,18 +162,10 @@ class PushService {
     }
     
     private func start(_ userInfo: NSDictionary, showAlertIfHave: Bool = false, viewController: UIViewController, scheme: Bool) {
-        if (scheme) {
-            if (DeviceService().showAlertScheme && showAlertIfHave) {
-                self.showAlert(userInfo);
-            } else {
-                self.startScheme(userInfo);
-            }
+        if (showAlertIfHave) {
+            self.showAlert(userInfo);
         } else {
-            if (DeviceService().showAlertHTML && showAlertIfHave) {
-                self.showAlert(userInfo);
-            } else {
-                self.startHTML(userInfo);
-            }
+            self.startScheme(userInfo);
         }
     }
     
@@ -193,14 +179,6 @@ class PushService {
                 UIApplication.shared.openURL(url);
             }
         }
-    }
-    
-    private func startHTML(_ userInfo: NSDictionary) {
-        let viewController = AlliNWebViewController();
-        
-        viewController.userInfo = userInfo;
-        
-        self.showViewController(viewController: viewController);
     }
     
     private func showViewController(viewController: UIViewController) {

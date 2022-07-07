@@ -7,16 +7,11 @@
 //
 struct NotificationConstant {
     static let ID = "id";
-    static let ID_SEND = "id_send";
     static let SUBJECT = "subject";
     static let DESCRIPTION = "description";
-    static let ID_CAMPAIGN = "id_campaign";
-    static let ID_LOGIN = "id_login";
+    static let VIEW_ID = "viewId";
     static let URL_SCHEME = "url_scheme";
     static let ACTION = "action";
-    static let DATE_NOTIFICATION = "date";
-    static let URL_TRANSACTIONAL = "url_transactional";
-    static let URL_CAMPAIGN = "url_campaign";
     static let SHOW_NOTIFICATION = "show_notification";
     
     // MARK: iOS default

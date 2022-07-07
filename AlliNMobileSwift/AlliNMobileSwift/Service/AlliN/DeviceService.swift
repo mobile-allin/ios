@@ -116,21 +116,6 @@ class DeviceService : BaseService {
         return identifier;
     }
     
-    func showAlertHTML(_ show: Bool) {
-        let sharedPreferencesManager = PreferencesManager();
-        sharedPreferencesManager.store(show, key: PreferencesConstant.SHOW_ALERT_HTML);
-    }
-    
-    var showAlertHTML: Bool {
-        let sharedPreferencesManager = PreferencesManager();
-        
-        if let show = sharedPreferencesManager.get(PreferencesConstant.SHOW_ALERT_HTML, type: .Bool) as? Bool {
-            return show;
-        }
-        
-        return false;
-    }
-    
     func showAlertScheme(_ show: Bool) {
         let sharedPreferencesManager = PreferencesManager();
         sharedPreferencesManager.store(show, key: PreferencesConstant.SHOW_ALERT_SCHEME);

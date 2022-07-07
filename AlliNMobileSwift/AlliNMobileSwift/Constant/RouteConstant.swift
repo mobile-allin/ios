@@ -10,6 +10,5 @@ struct RouteConstant {
     static let DEVICE_LOGOUT = "\(HttpConstant.URL_ALLIN)/device/logout";
     static let UPDATE = "update";
     static let ADD_LIST = "\(HttpConstant.URL_ALLIN)/addlist";
-    static let NOTIFICATION_CAMPAIGN = "\(HttpConstant.URL_ALLIN)/notification/campaign";
-    static let NOTIFICATION_TRANSACTIONAL = "\(HttpConstant.URL_ALLIN)/notification/transactional";
+    static let NOTIFICATION_VIEW = "\(HttpConstant.URL_ALLIN)/notification/view";
 }
